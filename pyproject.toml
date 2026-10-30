@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dus-ig-reels-dl"
+version = "1.0.0"
+description = "Instagram Reels downloader CLI with quality selection, cookies support and interactive mode."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Dus Mamud" },
+]
+dependencies = [
+    "yt-dlp>=2024.8.6",
+    "rich>=13.7.0",
+]
+keywords = ["instagram", "reels", "downloader", "yt-dlp", "cli"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Topic :: Multimedia :: Video",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[project.urls]
+Homepage = "https://github.com/dusmamud/instagram-reels-downloader"
+Repository = "https://github.com/dusmamud/instagram-reels-downloader.git"
+Issues = "https://github.com/dusmamud/instagram-reels-downloader/issues"
+
+[project.scripts]
+dus-ig-reels-dl = "reels_dl.cli:main"
+ig-reels-dl = "reels_dl.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["reels_dl*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
