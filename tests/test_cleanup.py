@@ -18,7 +18,10 @@ class TestCleanup(unittest.TestCase):
             self.assertTrue((folder / "keep.mp4").exists())
 
     def test_cleanup_missing_folder_returns_zero(self):
-        self.assertEqual(cleanup_partial_files("/tmp/does-not-exist-ig-reels-test"), 0)
+        with tempfile.TemporaryDirectory() as tmp:
+            missing = Path(tmp) / "does-not-exist-ig-reels-test"
+            self.assertFalse(missing.exists())
+            self.assertEqual(cleanup_partial_files(missing), 0)
 
 
 if __name__ == "__main__":

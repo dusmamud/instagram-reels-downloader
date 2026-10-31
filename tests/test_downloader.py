@@ -1,4 +1,6 @@
+import tempfile
 import unittest
+from pathlib import Path
 
 from reels_dl.cli import create_parser
 from reels_dl.core.downloader import IgReelsDownloader, is_instagram_url, quality_format_spec
@@ -27,16 +29,24 @@ class TestReelsDownloader(unittest.TestCase):
         self.assertTrue(args_dry.dry_run)
 
     def test_dry_run_opts_do_not_download(self):
-        dl = IgReelsDownloader(output_dir="/tmp/ig-reels-test", quality="720", dry_run=True)
+        dl = IgReelsDownloader(
+            output_dir=str(Path(tempfile.gettempdir()) / "ig-reels-test"),
+            quality="720",
+            dry_run=True,
+        )
         opts = dl._build_ydl_opts()
         self.assertTrue(opts["simulate"])
         self.assertIn("720", opts["format"])
         self.assertEqual(opts["merge_output_format"], "mp4")
 
     def test_cookiefile_auth_wiring(self):
-        dl = IgReelsDownloader(output_dir="/tmp/ig-reels-test", cookiefile="/tmp/cookies.txt")
+        cookiefile = str(Path(tempfile.gettempdir()) / "cookies.txt")
+        dl = IgReelsDownloader(
+            output_dir=str(Path(tempfile.gettempdir()) / "ig-reels-test"),
+            cookiefile=cookiefile,
+        )
         opts = dl._build_ydl_opts()
-        self.assertEqual(opts["cookiefile"], "/tmp/cookies.txt")
+        self.assertEqual(opts["cookiefile"], cookiefile)
 
 
 if __name__ == "__main__":
