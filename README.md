@@ -141,3 +141,4 @@ Poora disclaimer `DISCLAIMER.md` me hai. Ye tool koi DRM bypass nahi karta.
 Tip: `-F` is the short form of `--list-formats` — use it to see the available video formats before downloading.
 Note: the best quality setting downloads the best stream Instagram serves — it does not upscale the video.
 Never share or commit your `cookies.txt` file — it carries your logged-in session.
+Tip: on Ubuntu/Debian, install into a venv instead of using system pip — direct system `pip install` is blocked by PEP 668, and `--break-system-packages` should not be used.
