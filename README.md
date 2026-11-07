@@ -139,3 +139,4 @@ Sirf apne khud ke content, ya jiska permission / Creative Commons license ho, us
 Kisi aur ka copyrighted content bina permission ke download karna galat hai.
 Poora disclaimer `DISCLAIMER.md` me hai. Ye tool koi DRM bypass nahi karta.
 Tip: `-F` is the short form of `--list-formats` — use it to see the available video formats before downloading.
+Note: the best quality setting downloads the best stream Instagram serves — it does not upscale the video.
