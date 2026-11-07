@@ -138,3 +138,4 @@ Detail ke liye `TEST_GUIDE.md` dekho. Unit tests me koi real reel download nahi 
 Sirf apne khud ke content, ya jiska permission / Creative Commons license ho, usko download karo.
 Kisi aur ka copyrighted content bina permission ke download karna galat hai.
 Poora disclaimer `DISCLAIMER.md` me hai. Ye tool koi DRM bypass nahi karta.
+Tip: `-F` is the short form of `--list-formats` — use it to see the available video formats before downloading.
